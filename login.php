@@ -60,22 +60,9 @@ header("location:CRUD.php");
 else 
 {
 	$flag=0;
-	?>
-	<script>
-	myFunction();
-	function myFunction() {
-		var txt;
-		var r = confirm("Sorry incorrect username or password!");
-		if (r == true) {
-			
-		} else {
-			
-		}
-		
-	}
-	</script>
-	<?php
-	header("location:loginPage.php");
+	$msg="Error while login , please check username OR password";
+	
+	header("location:loginPage.php?msg=$msg");
 }
 
 
