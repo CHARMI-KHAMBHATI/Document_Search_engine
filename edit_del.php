@@ -116,8 +116,9 @@ break;
 		$result=mysqli_query($conn, $sql);
 			if($result)
 			{
-				echo "idhr";
-				header("location:CRUD.php");
+				$msg="file update successfull!";
+				header("location:CRUD.php?msg=$msg");
+			
 			
 			}
 			else 
@@ -135,7 +136,9 @@ if(isset($_POST['delete'])){
 			if($result)
 			{
 				
-				header("location:CRUD.php");
+				$msg="file deleted successfull!";
+				header("location:CRUD.php?msg=$msg");
+			
 			
 			}
 			else 
