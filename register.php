@@ -60,7 +60,9 @@ if($result)
 }
 else 
 {
-echo "register not successful"."<br>"."Error: ".$mysql_qry. "<br>". $conn->error;
+	$msg="Error while Register , please check valid details";
+	header("location:registerPage.php?msg=$msg");
+
 }
 
 
