@@ -55,7 +55,13 @@
 	$sql= "select * from files  where uid ='$uid' order by ftime desc";
 	$result=mysqli_query($conn, $sql);
 
-	
+	$rowcount=mysqli_num_rows($result);
+	if($rowcount==0){
+		
+		?>
+	<h2>Sorry No Uploads yet!</h2>
+	<?php
+	}
 	
 	while($row=mysqli_fetch_array($result))
 	{ 
