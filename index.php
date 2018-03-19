@@ -148,7 +148,8 @@
   }
  else if(isset($_POST["submittyp"])){
        $type=$_POST["typ"];
-	   $sql= "SELECT * FROM `files` natural join users WHERE date(ftime) between '2018-03-10' and '2018-03-20' order by ftime desc";
+	  $sql= "SELECT * FROM `files` natural join users WHERE ftype like '%{$type}%' order by ftime desc";
+	   
    }
    else if(isset($_POST["auth"])){
        $unm=$_POST["author"];
