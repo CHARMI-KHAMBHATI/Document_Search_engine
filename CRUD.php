@@ -44,7 +44,7 @@
 	 
 	 
     </ul>
-	<form class="navbar-form navbar-right" action="" method="post" autocomplete="on"> >
+	<form class="navbar-form navbar-right" action="CRUD.php" method="post" autocomplete="on"> >
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search" name="search" id="search"  >
       </div>
@@ -58,7 +58,7 @@
           <a href="#" >Apply Filter </a></li>
    
        <li>  
-	   <form class="navbar-form pull-left" action="" method="POST">
+	   <form class="navbar-form pull-left" action="CRUD.php" method="POST">
 	   <div class="form-group">
       <select name="typ" id="typ"  class="form-control" style="width: 200px;">
 		  <?php
@@ -81,7 +81,7 @@
 		</form></li> 
 		
 		 <li>  
-	   <form class="navbar-form pull-left" action="" method="POST">
+	   <form class="navbar-form pull-left" action="CRUD.php" method="POST">
 	   <div class="form-group">
 	    <input type="text" class="form-control btn-sm" placeholder="Author" name="author" id="author"  >
       </div>
@@ -89,7 +89,7 @@
 		</form></li> 
 		
 		<li>  
-	   <form class="navbar-form pull-left" action="" method="POST">
+	   <form class="navbar-form pull-left" action="CRUD.php" method="POST">
 	  
     
         
@@ -132,13 +132,24 @@
   
   <div class="col-sm-10">
 
+  
 
 	<?php
 		
+		if(isset($_GET['msg'])){
+			$msg=$_GET['msg'];
 	
-	
-		
+		?><script>
 
+    alert("<?php echo $msg; ?>");
+
+</script>
+<?php
+		$msg="";
+		unset($_GET['msg']);
+		}
+		
+		
 $user_name= $_SESSION['username'];
 		$sql= "SELECT * FROM `users` WHERE username like '$user_name'";
 	$result=mysqli_query($conn, $sql);
@@ -161,7 +172,10 @@ $_SESSION['id'] = $row['uid'];
   }
  else if(isset($_POST["submittyp"])){
        $type=$_POST["typ"];
-	   $sql= "SELECT * FROM `files` natural join users WHERE date(ftime) between '2018-03-10' and '2018-03-20' order by ftime desc";
+	   
+	   $sql= "SELECT * FROM `files` natural join users WHERE ftype like '%{$type}%' order by ftime desc";
+	   
+
    }
    else if(isset($_POST["auth"])){
        $unm=$_POST["author"];
