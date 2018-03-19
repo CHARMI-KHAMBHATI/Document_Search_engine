@@ -41,8 +41,8 @@ if(!empty($_FILES['file']['name']))
 			$result=mysqli_query($conn, $sql);
 			if($result)
 			{
-
-				header("location:CRUD.php");
+				$msg="file upload successfull!";
+				header("location:CRUD.php?msg=$msg");
 			
 			}
 			else echo "error with pic".mysqli_error($conn);
