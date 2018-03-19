@@ -39,6 +39,21 @@
  
 </nav> 
 
+   <?php
+		
+		if(isset($_GET['msg'])){
+			$msg=$_GET['msg'];
+	
+		?><script>
+
+    alert("<?php echo $msg; ?>");
+
+</script>
+<?php
+		$msg="";
+		unset($_GET['msg']);
+		}?>
+   
    
    <div class="container">
 	
